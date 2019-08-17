@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    web:
+        build: ./web
+        environment:
+            - APACHE_RUN_USER=www-data
+        volumes:
+            - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+        ports:
+            - 8080:80
+        working_dir: ${APP_PATH_CONTAINER}
+    db:
+        image: mariadb
+        restart: always
+        environment:
+          MYSQL_ROOT_PASSWORD: 123456
+        volumes:
+            - ${DB_PATH_HOST}:/var/lib/mysql
+        ports:
+            -  3307:3306
