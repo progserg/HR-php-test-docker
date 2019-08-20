@@ -7,3 +7,6 @@
 - `Выполнить docker-compose up --build. При дальнейшем использовании: docker-compose up -d`
 - `Для остановки контейнеров docker-compose down`
 - `Для запуска работы очереди queue, необходимо: docker-compose exec web echo "php artisan queue:work --queue=email,default --daemon &"`
+`если очередь не начнет работать, нужно выполнить действия отдельно:`
+- `docker-compose exec web bash`
+- `php artisan queue:work --queue=email,default --daemon &`
